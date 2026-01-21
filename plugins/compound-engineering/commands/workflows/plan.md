@@ -22,7 +22,32 @@ Do not proceed until you have a clear feature description from the user.
 
 ### 0. Idea Refinement
 
-Before running research, refine the idea through collaborative dialogue using the **AskUserQuestion tool**:
+**Check for brainstorm output first:**
+
+Before asking questions, look for recent brainstorm documents in `docs/brainstorms/` that match this feature:
+
+```bash
+ls -la docs/brainstorms/*.md 2>/dev/null | head -10
+```
+
+**Relevance criteria:** A brainstorm is relevant if:
+- The topic (from filename or YAML frontmatter) semantically matches the feature description
+- Created within the last 14 days
+- If multiple candidates match, use the most recent one
+
+**If a relevant brainstorm exists:**
+1. Read the brainstorm document
+2. Announce: "Found brainstorm from [date]: [topic]. Using as context for planning."
+3. Extract key decisions, chosen approach, and open questions
+4. **Skip the idea refinement questions below** - the brainstorm already answered WHAT to build
+5. Use brainstorm decisions as input to the research phase
+
+**If multiple brainstorms could match:**
+Use **AskUserQuestion tool** to ask which brainstorm to use, or whether to proceed without one.
+
+**If no brainstorm found (or not relevant), run idea refinement:**
+
+Refine the idea through collaborative dialogue using the **AskUserQuestion tool**:
 
 - Ask questions one at a time to understand the idea fully
 - Prefer multiple choice questions when natural options exist
